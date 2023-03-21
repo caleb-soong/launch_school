@@ -1,0 +1,1 @@
+//'Not Empty' will log to the console becaues an empty array is truthy.
