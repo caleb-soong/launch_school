@@ -1,0 +1,1 @@
+//Remove all non-letter characters from a string

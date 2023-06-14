@@ -1,0 +1,1 @@
+//Swap the capitalization of every “nth” letter of a string
