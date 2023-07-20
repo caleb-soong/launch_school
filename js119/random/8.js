@@ -79,9 +79,9 @@ function anagram(words) {
     let subarray = [];
     subarray.push(words.shift());
     for (let index = 0; index < words.length; index += 1) {
-      while (subarray[0].split('').sort().join('') ===
+      if (subarray[0].split('').sort().join('') ===
         words[index].split('').sort().join('')) {
-        subarray.push(words.splice(index, 1).toString());
+        subarray.push(words.splice(index, 1)[0]);
       }
     }
     result.push(subarray);

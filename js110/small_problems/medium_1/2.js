@@ -8,7 +8,7 @@ so it can move to the end (right).
 E: no edge cases
 D: the input number can be converted to a string, then altered,
 then converted back into a number when returned
-A: convert to a string, create empty string, iterate thorugh input string
+A: convert to a string, create empty string, iterate through input string
 concatenate non-rotating digits to empty string, then skip over leftmost
 rotating digit, concatentate remaining digits, and concatenate the skipped digit
 */

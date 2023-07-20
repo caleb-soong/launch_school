@@ -30,8 +30,7 @@ function findFibonacciIndexByLength(numberOfDigits) {
       fibonacciNumbers[fibonacciNumbers.length - 1]);
     fibonacciNumbers.push(nextFibonacciNumber);
   }
-  return fibonacciNumbers.indexOf(
-    fibonacciNumbers[fibonacciNumbers.length - 1]) + 1;
+  return fibonacciNumbers.length;
 }
 
 function makeFibonacciNumber(secondToLastNumber, LastNumber) {

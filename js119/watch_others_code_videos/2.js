@@ -1,26 +1,4 @@
 /*
-Shit code:
-
-function scramble(str1, str2) {
-  if (str1.length < str2.length) return false;
-  let arr1 = str1.split('').sort();
-  let arr2 = str2.split('').sort();
-  while (true) {
-    for (let index = 0; index < arr1.length; index += 1) {
-      if (arr2.length === 0) return true;
-      if (arr1[index] === arr2[0]) {
-        arr1.splice(index, 1);
-        arr2.shift();
-        break;
-      } else if (arr1[0] > arr2[0]) {
-        return false;
-      }
-    }
-  }
-}
-*/
-
-/*
 Write a function scramble(str1, str2) that returns true if a portion of str1
 characters can be rearranged to match str2, otherwise returns false.
 
