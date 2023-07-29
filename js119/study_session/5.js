@@ -1,14 +1,17 @@
 /* eslint-disable max-lines-per-function */
 // 1
 // You are given an array of strings and an integer `k`.
-// Your task is to return the first longest string consisting of `k` consecutive strings taken from the array.
+// Your task is to return the first longest string
+// consisting of `k` consecutive strings taken from the array.
 
-// Example: 
+// Example:
 
-// longestConsec(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"], 2)
+// longestConsec(
+// ["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"], 2)
 // "abigailtheta"
 
-// n being the length of the string array, if n = 0 or k > n or k <= 0 return "".
+// n being the length of the string array,
+// if n = 0 or k > n or k <= 0 return "".
 
 /*
 (Test frequently)
