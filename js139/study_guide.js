@@ -1,0 +1,305 @@
+/* eslint-disable max-len */
+/*
+JavaScript Topics
+-Hoisting
+  -Declarations behave as if they moved to the top of their respective scope.
+    -"Function-scoped declarations are moved to the function's beginning."
+    -"Block-scoped declarations are moved to the block's start."
+  -creation phase (not compilation phase)
+    -"Find all of the variable, function, and class declarations," record their names, designate their scopes.
+  -execution phase
+    -Program runs code line-by-line.
+  -temporal dead zone
+    -let, const, and class declarations are hoisted but are not given values then (ReferenceError).
+      -The name of the class is hoisted, but the definition is not.
+  -var declarations are hoisted and given the value undefined.
+  -Function declarations are hoisted and have function scope.
+  -Do not nest function declarations inside non-function blocks. Use function expressions instead.
+  -function and class expressions
+    -The variable is hoisted according to the declaration keyword, but the definition is not.
+  -"when a var variable and a function declaration have the same name,"
+    "The function declaration gets hoisted to the top of the program and the variable declaration gets discarded."
+      -The variable declaration gets discarded, but the assignment does not get discarded.
+  -"If you must use var, declare all of the variables at the top of the scope."
+-The var statement
+  -let and const were added in ES6 (2015).
+  -no way to create constants
+  -Top level var declarations create properties on the global object.
+  -"When you use var inside a function, the variable is not stored as a property of the global object."
+  -let are const are block-scoped.
+  -var is function-scoped.
+-Strict mode
+  -Default mode is "sloppy mode."
+  -"eliminates some silent errors that occur in sloppy mode by changing them to throw errors instead"
+  -"prevents some code that can inhibit JavaScript's ability to optimize a program so that it runs faster"
+  -"prohibits using names and syntax that may conflict with future versions of JavaScript"
+  -"use strict"
+    -"example of a pragma, a language construct that tells a compiler, interpreter, or other translator to process the code in a different way"
+  -"You can only enable strict mode at the very beginning of a file or function."
+    -"You can not enable strict mode for a block."
+  -"Once you enable strict mode, you can't disable it later in the same program or function."
+  -"JavaScript enables strict mode automatically within the body of a class."
+    -"The same thing happens with JavaScript modules."
+  -"Strict mode is lexically scoped."
+  -raises an error if you create a variable without a declaration keyword
+    -This is helpful for when you forget to use the this keyword.
+  -sets the this keyword to undefined when using function call syntax
+  -Leading zeroes in numbers are disallowed.
+    -In sloppy mode, leading zeroes in numbers without the digits 8 and 9 are interpreted as octal literals.
+  -Other differences
+    -"prevents declaring two function parameters with the same name.
+    -prevents using some newer reserved keywords, such as let and static, as variable names.
+    -prevents you from using the delete operator on a variable name.
+    -forbids binding of eval and arguments in any way.
+    -disables access to some properties of the arguments object in functions.
+    -disables the with statement, a statement whose use is not recommended even in sloppy mode."
+-Closures, scope, and private data
+  -closures
+    -"let a function access a variable that was in lexical scope at the function's definition point even when that variable is no longer in scope"
+    -"closures only close over the variables that the function needs"
+    -Variables that are in scope when a function is invoked that were not in scope at the definition point cannot be accessed by the function.
+  -scope
+    -declared scope
+      -Launch School terminology
+      -"refers to how a particular identifier is declared"
+      -"Knowing the declared scope lets us determine where a variable is available."
+      -block scope
+        -class
+        -let
+        -const
+      -function scope
+        -function
+        -var
+    -visibility scope
+      -Launch School terminology
+      -"refers to where a particular identifier -- a variable, function, or class name -- is available for use by your code"
+      -"determined as a combination of how each variable is declared and on the lexical location of each declaration"
+      -global scope
+        -"if a variable is available throughout your code"
+      -local scope
+        -otherwise (not global) "(inside a function or a block)"
+        -local function scope (function scope)
+        -local block scope (block scope)
+    -lexical scope
+      -"Scope can refer to the lexical structure of your code."
+      -"distinguishes between variables that are declared inside a function or block and the variables that are declared outside of that function or block"
+      -"especially important with closure"
+      -"concerns how the structure of your code determines what variables are accessible or inaccessible at any point in the program"
+      -inner scope
+      -outer scope
+  -private data
+    -can be created by code that uses closure
+    -can only be accessed by the function that formed a closure with the private data
+    -"enforce access via the provided methods"
+    -"helps protect data integrity since developers must use the interface"
+    -"helps prevent the user of an object from becoming dependent on the implementation"
+      -"If you later change the implementation, your API should remain the same."
+    -"Even when you restrict access, it's easy to expose data by returning references to that data."
+-Partial function application
+  -"refers to the creation of a function that can call a second function with fewer arguments than the second function expects"
+  -"you can use bind to perform partial function application"
+-IIFEs
+  -immediately invoked function expressions
+  -Outer parentheses are required for function declarations (which turn them into function expressions).
+  -Using an unnamed IIFE creates private scope for the variables local to the IIFE.
+  -ES6 allows the use of blocks to create private scope.
+  -can be used to create functions with private data
+-Shorthand notation (understanding, not using)
+  -concise property initializers
+  -concise methods
+  -object destructuring
+    -The names between the braces map the object's properties with those names to variables of the same name.
+      -Order doesn't matter because the name refers to the name of the object property.
+      -You can change the variable name with assignment inside of the braces objPropName: newVariableName.
+    -You can exclude one or more of the properties.
+    -works with variable declarations (let, const, var), function parameters, and assignment
+      -With assignment, paratheses are required.
+  -array destructuring
+    -Unlike with object destructing, order matters since array elements are ordered.
+    -You can skip elements by using blank spaces followed by commas inside of the brackets.
+    -can be used to swap the values in two variables
+    -"You can use rest syntax in array destructuring to assign a variable to the rest of an array."
+  -spread syntax
+    -"uses ... to "spread" the elements of an array or object into separate items"
+    -can be used instead of apply with null
+  -rest syntax
+    -"collects multiple items into an array or object"
+    -"is used most often when working with functions that take an arbitrary number of parameters"
+Modules (CommonJS)
+  -CommonJS modules (Node modules)
+  -JS modules (ES modules) (ECMAScript modules)
+  -It becomes easier to understand each component.
+  -It is faster to find what you need.
+  -It is easier to collaborate with a team.
+  -It is easier to reuse part of the code on a different project.
+  -"can also make it easier to work with private data, which helps maintain encapsulation"
+  -"When importing modules that weren't installed by NPM, you need to specify the path to the file that contains the module"
+  -Namespace import
+    -"We can also import all declarations from a file using the * syntax and then access them using the dot (.) syntax."
+    -import * as FooModule from "./foo"
+    -FooModule.foo();
+  -"Curly braces are not required when importing a default export."
+    -You can also use a different name when importing.
+  -Use commas when importing multiple exports at once.
+-Exceptions
+  -ReferenceError
+  -TypeError
+  -SyntaxError
+  -We can throw new Error ourselves if JavaScript won't throw an error when we want one.
+  -"Every exception terminates the program unless a catch block handles it without re-throwing it."
+-Pure functions and side effects
+  -side effects
+    -"It reassigns any non-local variable."
+    -"It mutates the value of any object referenced by a non-local variable."
+    -"It reads from or writes to any data entity (files, network connections, etc.) that is non-local to your program."
+    -"It raises an exception."
+    -"It calls another function that has any side effects that are not confined to the current function."
+    -examples:
+      -console.log
+      -readline.question
+      -new Date()
+      -Math.random()
+      -throw new Error ("If a function can raise an exception and doesn't catch and handle it")
+        -Or, "if the catch block itself has side effects" 
+  -pure functions
+    -have no side effects
+    -"Given the same set of arguments, the function always returns the same value during the function's lifetime."
+    -nested pure functions
+      -"can produce different results for each instantiation -- that does not change its status as a pure function"
+-Asynchronous programming (setTimeout, setInterval)
+  -asynchronous functions
+    -"don't block execution for the rest of the program while they execute"
+    -"run concurrently with other operations so that the caller doesn't have to wait for the task to finish running"
+  -as opposed to sequential code or synchronous code
+  -setTimeout()
+    -takes a callback and the delay time in ms (defaults to zero)
+    -"your program must stop running before code executed with setTimeout will even begin to run"
+  -setInterval()
+    -takes a callback and the interval time in ms at which the function is invoked indefinitely
+    -Assign the return value to a variable.
+  -clearInterval()
+    -Invoke with the above variable to stop invoking the function.
+
+Testing With Jest
+-Testing terminology
+  -"write tests to prevent regression"
+    -"an event that causes previously working code to stop working after a change to your code or environment"
+  -"learning unit testing"
+-Jest
+  -test suite
+    -"the entire set of tests that accompanies your program or application"
+  -test
+    -"a specific situation or context that you're attempting to test"
+    -also called specs
+  -assertion
+    -"the verification step that confirms that your program did what it should"
+    -also called expectations
+  -describe
+    -takes a string (group name) and a callback
+    -groups your tests together
+    -is optional
+  -test
+    -takes a string (test name) and a callback
+    -You can have multiple assertions within one test.
+    -skip test with xtext or test.skip
+-expect and matchers (toBe and toEqual especially)
+  -expect(actual value).matcher(expected value)
+  -expect method "returns an object that includes a variety of matcher methods"
+  -To invert a matcher, "use the not property on the object returned by expect."
+  -matchers
+    -toBe checks for ===
+    -toEqual checks for === or object equality
+-SEAT approach
+  -"Set up the necessary objects.""
+    -The beforeEach method is used inside the describe method before any tests.
+  -"Execute the code against the object we're testing.""
+  -"Assert the results of execution.""
+  -"Tear down and clean up any lingering artifacts.""
+    -afterEach method
+-Understanding code coverage
+  -"how much of our program code was tested by a test suite"
+  -"the percentage of functions or methods called by your tests or by the percentage of lines of code that executed as a result of your tests"
+  -jest --coverage file.test.js
+-Writing tests
+  -*practice writing tests*
+
+Packaging Code
+-Project directory layout
+  -npm standard
+  -directory name
+    -lowercase letters
+    -digits
+    -underscores
+    -hyphens
+    -NO SPACES
+├── dist
+│   ├── todo.js
+│   └── todolist.js
+├── lib
+│   ├── todo.js
+│   └── todolist.js
+├── index.js
+├── node_modules
+├── package-lock.json
+├── package.json
+└── test
+    └── todolist.test.js
+-what is transpilation
+  -"the process of converting source code written in one language into another language with a similar level of abstraction to the original code"
+  -from newer JavaScript to older JavaScript so that older Node.js and browsers can interpret the code
+  -Babel (command line)
+    -creates dist directory
+    -env (preset)
+      -"plug-in that has all the information needed to compile one version of JavaScript to another"
+-npm and npx
+  -npm command
+    -node package manager
+    -comes bundled with node
+    -manages your packages
+  -node packages
+    -eslint (command line)
+    -jest (command line)
+    -readline-sync (require)
+    -lodash (require)
+      -"referenced by an underscore variable"
+      -chuck function
+  -"main strength is its ability to manage a project’s dependencies"
+  -an alias for --save is -S
+  -npx
+    -"run a local npm executable package" when there is also a global executable of the same name
+  -for global install, use npm install [name] -g
+-package.json and package-lock.json
+  -package.json
+    -"lists all the packages that your project needs"
+    -"configuration file written in JSON format"
+    -dependencies
+      -"Directly add the dependency to package.json" under dependencies or "Use npm install"
+      -remove with npm uninstall
+      npm prune will remove from node_modules dependencies manually removed from package.json
+    -devDependencies
+      -for packages only needed during development
+        -"code linters, debuggers, and minifiers"
+      -npm install [name] --save-dev
+      -npm uninstall [name] --save-dev
+  -package-lock.json
+    -created when npm install "installs the dependencies that we added to the package.json directory"
+    -"shows the precise versions of the packages that npm installed"
+    -"shows the dependencies of each package and the version of each dependency"
+    -must be added to git repo so that "all contributors and users of your package to install the correct versions"
+-npm scripts
+  -scripts object in package.json
+    -"series of key/value pairs in which each key is the name of the script, and the value is the script you want to run"
+  -run script with npm run [name]
+  -"let us name our terminal command(s)"
+  -"you don't need to use the npx command"
+-packaging projects
+  -package.json
+    -name
+      -"name of your package"
+    -version
+      -"initial module version"
+    -main
+      "name of the file that Node will load when someone imports your package"
+  -publish your package
+    -npm publish --access public
+*/

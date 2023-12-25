@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.12.1",
+    "eslint-cli": "^1.1.1"
+  },
+  "dependencies": {
+    "fraction.js": "github:infusion/Fraction.js",
+    "lodash": "^4.17.21",
+    "readline-sync": "^1.4.10",
+    "seedrandom": "^3.0.5",
+    "shuffle-array": "^1.0.1"
+  }
+}
